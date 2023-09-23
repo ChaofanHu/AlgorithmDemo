@@ -7,7 +7,7 @@ public class Heap<T extends Comparable<T>> {
     private int N;
 
     public Heap(int capacity){
-        this.items = (T[]) new Object[capacity];
+        this.items = (T[]) new Comparable[capacity+1];
         this.N = 0;
     }
 
@@ -33,7 +33,7 @@ public class Heap<T extends Comparable<T>> {
     private void swim(int k){
         //通过循环比较父结点的值
         while(k>1){
-            if(less(k/2,k){
+            if(less(k/2,k)){
                 exch(k/2,k);
             }
             k = k/2;
@@ -43,14 +43,39 @@ public class Heap<T extends Comparable<T>> {
     public T delMax(){
         T max = items[1];
 
-        //交换索引
-
-
-        return  null;
+        //交换索引1处与最大索引处的值
+        exch(1,N);
+        //删除最大索引处的值
+        items[N] = null;
+        //元素个数-1
+        this.N--;
+        //通过下沉算法让堆重新有序
+        sink(1);
+        return  max;
     }
 
     //使用下沉算法，使索引k处堆元素能在堆中处于一个正确的位置
     private void sink(int k){
-
+        //对比2k与2k+1较大处处的结点的值；
+        while (2*k<N){
+            int max;
+            //如果有右结点
+            if(2*k +1 <= N){
+                if (less(2*k, 2*k+1)){
+                    max = 2*k+1;
+                }else {
+                    max = 2*k;
+                }
+            }else{
+                max = 2*k;
+            }
+            //比较当前结点的值
+            if(less(k,max)){
+                exch(k,max);
+                k=max;
+            }else {
+                break;
+            }
+        }
     }
 }
