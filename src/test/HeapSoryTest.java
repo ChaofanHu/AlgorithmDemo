@@ -1,4 +1,6 @@
-package tree;
+package test;
+
+import tree.HeapSort;
 
 public class HeapSoryTest {
     public static void main(String[] args) {

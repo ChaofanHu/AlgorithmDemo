@@ -35,6 +35,14 @@ public class Queue<T> implements Iterable<T>{
         }
         N++;
     }
+    public void enqueue2(T t){
+        if(last==null){
+            last = new Node(t,null);
+        }
+        Node oldLast = last;
+        last = new Node(t,null);
+        oldLast.next = last;
+    }
     //出队
     public T dequeue(){
         if(isEmpty()==true){
@@ -52,7 +60,7 @@ public class Queue<T> implements Iterable<T>{
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new QIterator();
     }
 
     private class QIterator implements Iterator{
@@ -69,7 +77,8 @@ public class Queue<T> implements Iterable<T>{
 
         @Override
         public Object next() {
-            return n.next.item;
+            n = n.next;
+            return n.item;
         }
     }
 
