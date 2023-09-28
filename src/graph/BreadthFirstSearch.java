@@ -19,7 +19,6 @@ public class BreadthFirstSearch {
         waitSearch.enqueue(v);
         while(!waitSearch.isEmpty()){
             Integer wait = waitSearch.dequeue();
-
             for (Integer w: G.adj(wait)){
                 if (!marked[w]) {
                     marked[w]=true;

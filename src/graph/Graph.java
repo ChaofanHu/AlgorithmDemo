@@ -29,7 +29,7 @@ public class Graph {
     }
     //向图中添加一条边
     public void addEdge(int v, int w){
-        //在无向图中国，边是没有方向的，索引该边既可以硕士从v到w到边，又可以是w到v到边，因此需要让w出现在v到邻接表中，v也需要出现在w到邻接表中
+        //在无向图中，边是没有方向的，索引该边既可以硕士从v到w到边，又可以是w到v到边，因此需要让w出现在v到邻接表中，v也需要出现在w到邻接表中
         adj[v].enqueue(w);
         adj[w].enqueue(v);
         //边的数量加一
